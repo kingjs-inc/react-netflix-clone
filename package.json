@@ -42,7 +42,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3" 
   },
   "homepage": "https://kingjs-inc.github.io/react-netflix-clone"
 }
