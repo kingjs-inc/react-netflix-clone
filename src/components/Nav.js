@@ -23,6 +23,7 @@ export default function Nav() {
 
   return (
     <nav className={`nav ${show && "nav__black"} `}>
+      {/* // show가 true 일때는 nav__black 의 className 사용 false 일때는 nav만 적용 */}
       <img
         alt="Netflix logo"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/170px-Netflix_2015_logo.svg.png"
