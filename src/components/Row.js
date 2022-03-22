@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import MovieModal from "./MovieModal";
 import "./Row.css";
+import { useModalClose } from "../hooks/useModalClose";
 
 export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [movies, setMovies] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen, outside_modal] = useModalClose();
   const [movieSelected, setMovieSelected] = useState({});
 
   useEffect(() => {
@@ -63,7 +65,11 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
       </div>
 
       {modalOpen && (
-        <MovieModal {...movieSelected} setModalOpen={setModalOpen} />
+        <MovieModal
+          {...movieSelected}
+          setModalOpen={setModalOpen}
+          outside_modal={outside_modal}
+        />
       )}
     </section>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./MovieModal.css";
 
 function MovieModal({
@@ -10,10 +10,25 @@ function MovieModal({
   first_air_date,
   vote_average,
   setModalOpen,
+  outside_modal,
 }) {
+  // const outside_modal = useRef();
+  // const handleModalClose = (e) => {
+  //   if (outside_modal.current === e.target) {
+  //     setModalOpen(false);
+  //   }
+  // };
+
   return (
     <div className="presentation">
-      <div className="wrapper-modal">
+      <div
+        className="wrapper-modal"
+        ref={outside_modal}
+        // 가능
+        // onClick={(e) => handleModalClose(e)}
+        // onClick={() => setModalOpen(false)}
+        // onClick={() => useModalClose()}
+      >
         <div className="modal">
           <span onClick={() => setModalOpen(false)} className="modal-close">
             X
