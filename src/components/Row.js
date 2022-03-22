@@ -3,6 +3,10 @@ import axios from "../api/axios";
 import MovieModal from "./MovieModal";
 import "./Row.css";
 import { useModalClose } from "../hooks/useModalClose";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
 
 export default function Row({ isLargeRow, title, id, fetchUrl }) {
   const [movies, setMovies] = useState([]);
@@ -39,19 +43,29 @@ export default function Row({ isLargeRow, title, id, fetchUrl }) {
             {"<"}
           </span>
         </div>
-        <div id={id} className="row__posters">
+
+        <Swiper
+          id={id}
+          className="row__posters"
+          spaceBetween={3}
+          slidesPerView={5}
+          onSlideChange={() => console.log("slide chage")}
+          onSwiper={() => console.log(Swiper)}
+        >
           {movies.map((movie) => (
-            <img
-              key={movie.id}
-              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-              src={`https://image.tmdb.org/t/p/original/${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              } `}
-              alt={movie.name}
-              onClick={() => handleClick(movie)}
-            />
+            <SwiperSlide>
+              <img
+                key={movie.id}
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                src={`https://image.tmdb.org/t/p/original/${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                } `}
+                alt={movie.name}
+                onClick={() => handleClick(movie)}
+              />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
         <div className="slider__arrow-right">
           <span
             className="arrow"
